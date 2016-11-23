@@ -18,30 +18,46 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.winLabel.isHidden = true
     }
     
     @IBAction func redTapped(_ sender: AnyObject) {
         print("red")
+        simonSaysGame.guessRed()
+        updateWinLable()
     }
     
     @IBAction func greenTapped(_ sender: AnyObject) {
         print("green")
+        simonSaysGame.guessGreen()
+        updateWinLable()
     }
     
     @IBAction func yellowTapped(_ sender: AnyObject) {
         print("yellow")
+        simonSaysGame.guessYellow()
+        updateWinLable()
     }
     
     @IBAction func blueTapped(_ sender: AnyObject) {
         print("blue")
+        simonSaysGame.guessBlue()
+        updateWinLable()
     }
     
-    
+    func updateWinLable() {
+        if simonSaysGame.wonGame() {
+            self.winLabel.isHidden = false
+            self.winLabel.text = "YOU WIN!"
+        }
+        
+        if (simonSaysGame.chosenColors.count == simonSaysGame.patternToMatch.count) && (!simonSaysGame.wonGame()) {
+            self.winLabel.isHidden = false
+            self.winLabel.text = "NOPE, TRY AGAIN!"
+        }
+    }
     
 }
-
-
-
 
 
 // MARK: - SimonSays Game Methods
