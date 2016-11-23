@@ -10,21 +10,21 @@ import Foundation
 import UIKit
 
 enum Color: Int {
-    case Red, Green, Yellow, Blue
+    case red, green, yellow, blue
 }
 
 // MARK: - UIColor Display
 extension Color {
     var colorToDisplay: UIColor {
         switch self {
-        case .Red:
-            return UIColor.redColor()
-        case .Green:
-            return UIColor.greenColor()
-        case .Yellow:
-            return UIColor.yellowColor()
-        case .Blue:
-            return UIColor.blueColor()
+        case .red:
+            return UIColor.red
+        case .green:
+            return UIColor.green
+        case .yellow:
+            return UIColor.yellow
+        case .blue:
+            return UIColor.blue
         }
     }
 }
@@ -34,13 +34,13 @@ extension Color {
 extension Color: CustomStringConvertible {
     var description: String {
         switch self {
-        case .Red:
+        case .red:
             return "Red"
-        case .Green:
+        case .green:
             return "Green"
-        case .Yellow:
+        case .yellow:
             return "Yellow"
-        case .Blue:
+        case .blue:
             return "Blue"
         }
     }
@@ -86,26 +86,26 @@ extension SimonSays {
         return chosenColors == patternToMatch
     }
     
-    private mutating func makeGuessWith(color: Color) -> Bool {
+    fileprivate mutating func makeGuessWith(_ color: Color) -> Bool {
         guard chosenColors.count < patternToMatch.count else { return false }
         chosenColors.append(color)
         return patternToMatch[chosenColors.count - 1] == color
     }
 
     mutating func guessRed() {
-        makeGuessWith(.Red)
+        makeGuessWith(.red)
     }
     
     mutating func guessGreen() {
-        makeGuessWith(.Green)
+        makeGuessWith(.green)
     }
     
     mutating func guessYellow() {
-        makeGuessWith(.Yellow)
+        makeGuessWith(.yellow)
     }
     
     mutating func guessBlue() {
-        makeGuessWith(.Blue)
+        makeGuessWith(.blue)
     }
     
     mutating func tryAgainWithTheSamePattern() {
